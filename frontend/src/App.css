@@ -1,0 +1,1321 @@
+/* ==========================================================================
+   LLOYD INSTITUTE OF ENGINEERING & TECHNOLOGY - COLLEGE ERP PORTAL
+   Custom Stylesheet matching College ERP Dashboard Reference
+   ========================================================================== */
+
+:root {
+  /* College ERP Reference Colors */
+  --erp-sidebar: #1C1A3D;           /* Deep dark navy / purple sidebar */
+  --erp-sidebar-active: #302D68;    /* Active menu background */
+  --erp-sidebar-hover: #262352;     /* Sidebar menu hover */
+  --erp-sidebar-border: #5549E8;    /* Active menu left highlight border */
+  --erp-sidebar-text: #9E9BB8;      /* Muted sidebar text */
+  --erp-sidebar-text-active: #FFF;  /* Active white text */
+
+  --erp-primary: #5549E8;           /* Primary purple accent */
+  --erp-primary-hover: #4338ca;
+  --erp-primary-soft: #EEF0FD;      /* Soft light purple background */
+  --erp-indigo: #4F46E5;
+  --erp-indigo-soft: #E0E7FF;
+
+  --erp-bg: #F5F7FC;                /* Light grey-blue dashboard background */
+  --erp-card-bg: #FFFFFF;           /* Crisp white cards */
+  --erp-border: #E8EDF5;            /* Thin clean border */
+  --erp-border-subtle: #F1F4F9;
+
+  --erp-text-main: #1E293B;         /* Slate 800 - dark readable text */
+  --erp-text-muted: #64748B;        /* Slate 500 - secondary text */
+  --erp-text-light: #94A3B8;        /* Slate 400 */
+
+  /* Status Colors */
+  --erp-success: #10B981;
+  --erp-success-bg: #E6FBF2;
+  --erp-warning: #F59E0B;
+  --erp-warning-bg: #FEF6E7;
+  --erp-danger: #EF4444;
+  --erp-danger-bg: #FEECEB;
+  --erp-info: #0284C7;
+  --erp-info-bg: #E0F2FE;
+
+  /* Typography & Sizing */
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(28, 26, 61, 0.04);
+  --shadow-card: 0 4px 14px 0 rgba(28, 26, 61, 0.04), 0 1px 3px 0 rgba(28, 26, 61, 0.02);
+  --shadow-hover: 0 8px 24px -2px rgba(28, 26, 61, 0.08);
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--erp-bg);
+  color: var(--erp-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   APP SHELL LAYOUT
+   ========================================================================== */
+.erp-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--erp-bg);
+}
+
+/* ==========================================================================
+   SIDEBAR (#1C1A3D)
+   ========================================================================== */
+.erp-sidebar {
+  width: 270px;
+  background-color: var(--erp-sidebar);
+  color: var(--erp-sidebar-text);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 50;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.erp-sidebar.collapsed {
+  width: 80px;
+}
+
+/* Sidebar Header / Brand */
+.sidebar-brand-box {
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.sidebar-logo-shield {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #5549E8 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(85, 73, 232, 0.35);
+}
+
+.sidebar-brand-text h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.sidebar-brand-text span {
+  font-size: 0.72rem;
+  color: #9E9BB8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+}
+
+.sidebar-toggle-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  color: #9E9BB8;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+/* Student Profile Card in Sidebar */
+.sidebar-profile-card {
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s;
+}
+
+.erp-sidebar.collapsed .sidebar-profile-card {
+  padding: 0.6rem;
+  margin: 0.5rem auto;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.sidebar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5549E8 0%, #3B82F6 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-profile-info {
+  overflow: hidden;
+}
+
+.sidebar-profile-name {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sidebar-profile-role {
+  color: #9E9BB8;
+  font-size: 0.74rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sidebar-profile-role .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--erp-success);
+}
+
+/* Search Menu Field */
+.sidebar-search-box {
+  padding: 0 1rem 0.75rem 1rem;
+}
+
+.erp-sidebar.collapsed .sidebar-search-box {
+  display: none;
+}
+
+.sidebar-search-wrapper {
+  position: relative;
+}
+
+.sidebar-search-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem 0.55rem 2.1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: #FFFFFF;
+  font-size: 0.825rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.sidebar-search-input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--erp-primary);
+}
+
+.sidebar-search-input::placeholder {
+  color: #7A789A;
+}
+
+.sidebar-search-icon {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #7A789A;
+  pointer-events: none;
+}
+
+/* Sidebar Menu Items */
+.sidebar-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 0.75rem;
+  flex: 1;
+}
+
+.nav-section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #6D6992;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  padding: 0.75rem 0.75rem 0.35rem 0.75rem;
+}
+
+.erp-sidebar.collapsed .nav-section-title {
+  display: none;
+}
+
+.sidebar-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--erp-sidebar-text);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar-nav-btn:hover {
+  background-color: var(--erp-sidebar-hover);
+  color: var(--erp-sidebar-text-active);
+}
+
+.sidebar-nav-btn.active {
+  background-color: var(--erp-sidebar-active);
+  color: var(--erp-sidebar-text-active);
+  border-left: 3px solid var(--erp-sidebar-border);
+  font-weight: 600;
+}
+
+.sidebar-nav-btn .nav-icon {
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.sidebar-nav-btn .nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.erp-sidebar.collapsed .sidebar-nav-btn {
+  justify-content: center;
+  padding: 0.75rem 0;
+  border-left: none;
+  border-radius: 8px;
+}
+
+.erp-sidebar.collapsed .sidebar-nav-btn.active {
+  background-color: var(--erp-sidebar-border);
+}
+
+.erp-sidebar.collapsed .sidebar-nav-btn .nav-text {
+  display: none;
+}
+
+/* Sidebar Footer */
+.sidebar-footer-box {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.75rem;
+  color: #7A789A;
+}
+
+.erp-sidebar.collapsed .sidebar-footer-box {
+  display: none;
+}
+
+.college-badge-pill {
+  background: rgba(85, 73, 232, 0.15);
+  border: 1px solid rgba(85, 73, 232, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  color: #DDD9FF;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.college-badge-pill strong {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR (#FFFFFF)
+   ========================================================================== */
+.erp-topbar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--erp-border);
+  height: 68px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.topbar-page-info h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--erp-text-main);
+  line-height: 1.2;
+}
+
+.topbar-breadcrumb {
+  font-size: 0.75rem;
+  color: var(--erp-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.topbar-college-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--erp-primary-soft);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(85, 73, 232, 0.15);
+}
+
+.topbar-college-tag span.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--erp-primary);
+}
+
+.topbar-college-tag span.college-name {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--erp-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Topbar Right Controls */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topbar-action-btn {
+  background: transparent;
+  border: 1px solid var(--erp-border);
+  color: var(--erp-text-muted);
+  height: 38px;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.825rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.topbar-action-btn:hover {
+  background-color: #F8FAFC;
+  color: var(--erp-text-main);
+  border-color: #CBD5E1;
+}
+
+.notification-bell-btn {
+  position: relative;
+  width: 38px;
+  padding: 0;
+  justify-content: center;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  background-color: var(--erp-danger);
+  color: #FFFFFF;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+.topbar-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.65rem 0.35rem 0.4rem;
+  border: 1px solid var(--erp-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.topbar-user-pill:hover {
+  background-color: #F8FAFC;
+}
+
+.topbar-user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--erp-primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.topbar-user-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.topbar-user-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--erp-text-main);
+}
+
+.topbar-user-sub {
+  font-size: 0.7rem;
+  color: var(--erp-text-muted);
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+.erp-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.erp-content-container {
+  padding: 1.75rem 2rem;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   COMMON WHITE CARD SYSTEM
+   ========================================================================== */
+.erp-card {
+  background-color: var(--erp-card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--erp-border);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.erp-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.erp-card-header {
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--erp-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.erp-card-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--erp-text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.erp-card-header p {
+  font-size: 0.8rem;
+  color: var(--erp-text-muted);
+  margin-top: 0.15rem;
+}
+
+.erp-card-body {
+  padding: 1.5rem;
+}
+
+/* ==========================================================================
+   DASHBOARD HOME VIEW (Matching Reference Screenshot)
+   ========================================================================== */
+
+/* Summary Metrics Row */
+.erp-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.erp-metric-card {
+  background: #FFFFFF;
+  border: 1px solid var(--erp-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.erp-metric-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.erp-metric-card.purple::before { background: var(--erp-primary); }
+.erp-metric-card.blue::before { background: var(--erp-indigo); }
+.erp-metric-card.green::before { background: var(--erp-success); }
+.erp-metric-card.amber::before { background: var(--erp-warning); }
+
+.metric-info p {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--erp-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.metric-info h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--erp-text-main);
+  line-height: 1;
+}
+
+.metric-info span.metric-sub {
+  font-size: 0.72rem;
+  color: var(--erp-text-light);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.metric-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.metric-icon-box.purple {
+  background-color: var(--erp-primary-soft);
+  color: var(--erp-primary);
+}
+
+.metric-icon-box.blue {
+  background-color: var(--erp-indigo-soft);
+  color: var(--erp-indigo);
+}
+
+.metric-icon-box.green {
+  background-color: var(--erp-success-bg);
+  color: var(--erp-success);
+}
+
+.metric-icon-box.amber {
+  background-color: var(--erp-warning-bg);
+  color: var(--erp-warning);
+}
+
+/* Main Dashboard Two-Column Grid */
+.erp-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .erp-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Attendance Analytics Bar Chart */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.chart-header-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-legend-items {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.legend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.legend-color-dot.purple { background-color: var(--erp-primary); }
+.legend-color-dot.soft { background-color: #D1D5DB; }
+
+/* Pure CSS / SVG Modern Attendance Chart */
+.attendance-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  height: 220px;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  border-bottom: 2px solid var(--erp-border);
+}
+
+.bar-column-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar-pill-track {
+  width: 28px;
+  height: 180px;
+  background-color: #F1F4F9;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-pill-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #7C3AED 0%, #5549E8 100%);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.bar-pill-track:hover .bar-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-4px);
+}
+
+.bar-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1E293B;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.bar-month-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+}
+
+/* Personal Information Card */
+.personal-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.student-hero-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--erp-border);
+}
+
+.student-hero-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5549E8 0%, #3B82F6 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(85, 73, 232, 0.25);
+  border: 3px solid #EEF0FD;
+}
+
+.student-hero-title h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--erp-text-main);
+}
+
+.student-hero-title p {
+  font-size: 0.8rem;
+  color: var(--erp-text-muted);
+}
+
+.student-hero-title span.roll-tag {
+  display: inline-block;
+  background: var(--erp-primary-soft);
+  color: var(--erp-primary);
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.info-details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-details-table tr td {
+  padding: 0.65rem 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--erp-border-subtle);
+}
+
+.info-details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.info-details-table td.label-col {
+  color: var(--erp-text-muted);
+  font-weight: 500;
+  width: 42%;
+}
+
+.info-details-table td.value-col {
+  color: var(--erp-text-main);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Weekly Attendance Card */
+.weekly-attendance-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.day-pill-box {
+  background-color: #F8FAFC;
+  border: 1px solid var(--erp-border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.25rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.day-pill-box.present {
+  background-color: var(--erp-success-bg);
+  border-color: #A7F3D0;
+}
+
+.day-pill-box.absent {
+  background-color: var(--erp-danger-bg);
+  border-color: #FECACA;
+}
+
+.day-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--erp-text-muted);
+  text-transform: uppercase;
+}
+
+.day-status-icon {
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+/* Honest Empty / Notice State */
+.honest-empty-state {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background-color: #FAFBFD;
+  border: 1.5px dashed var(--erp-border);
+  border-radius: var(--radius-md);
+  color: var(--erp-text-muted);
+}
+
+.honest-empty-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.65rem;
+}
+
+.honest-empty-state h4 {
+  font-size: 1.05rem;
+  color: var(--erp-text-main);
+  margin-bottom: 0.35rem;
+}
+
+.honest-empty-state p {
+  font-size: 0.825rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   STUDENT MANAGEMENT PAGE (Clean Table & Form)
+   ========================================================================== */
+.student-mgmt-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .student-mgmt-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.835rem;
+  font-weight: 600;
+  color: var(--erp-text-main);
+  margin-bottom: 0.35rem;
+}
+
+.form-label span.req {
+  color: var(--erp-danger);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  border: 1.5px solid var(--erp-border);
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+  color: var(--erp-text-main);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--erp-primary);
+  box-shadow: 0 0 0 3px rgba(85, 73, 232, 0.12);
+}
+
+.form-input::placeholder {
+  color: #94A3B8;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--erp-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(85, 73, 232, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--erp-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(85, 73, 232, 0.35);
+}
+
+.btn-secondary {
+  background-color: #E2E8F0;
+  color: var(--erp-text-main);
+}
+
+.btn-secondary:hover {
+  background-color: #CBD5E1;
+}
+
+.btn-danger {
+  background-color: var(--erp-danger);
+  color: #FFFFFF;
+}
+
+.btn-danger:hover {
+  background-color: #DC2626;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  border-radius: 6px;
+}
+
+.btn-edit {
+  background-color: var(--erp-primary-soft);
+  color: var(--erp-primary);
+  border: 1px solid rgba(85, 73, 232, 0.2);
+}
+
+.btn-edit:hover {
+  background-color: #DDE2FC;
+}
+
+.btn-delete {
+  background-color: var(--erp-danger-bg);
+  color: var(--erp-danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+  background-color: #FCD5D2;
+}
+
+/* Search Box in Table Toolbar */
+.table-toolbar-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--erp-border);
+}
+
+.erp-search-field {
+  position: relative;
+  min-width: 260px;
+  flex: 1;
+}
+
+.erp-search-field input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.3rem;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--erp-border);
+  border-radius: var(--radius-pill);
+  outline: none;
+  font-family: inherit;
+  background-color: #F8FAFC;
+  transition: all 0.2s;
+}
+
+.erp-search-field input:focus {
+  background-color: #FFFFFF;
+  border-color: var(--erp-primary);
+  box-shadow: 0 0 0 3px rgba(85, 73, 232, 0.12);
+}
+
+.erp-search-field .search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94A3B8;
+  font-size: 0.85rem;
+}
+
+/* Styled Table */
+.erp-table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.erp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.erp-table th {
+  background-color: #F8FAFC;
+  color: var(--erp-text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1.5px solid var(--erp-border);
+}
+
+.erp-table td {
+  padding: 0.95rem 1.25rem;
+  font-size: 0.88rem;
+  color: var(--erp-text-main);
+  border-bottom: 1px solid var(--erp-border);
+  vertical-align: middle;
+}
+
+.erp-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.erp-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+/* Roll & Course Badges */
+.badge-roll {
+  display: inline-block;
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--erp-primary);
+  background-color: var(--erp-primary-soft);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.825rem;
+}
+
+.badge-course {
+  display: inline-block;
+  font-weight: 600;
+  color: #4338CA;
+  background-color: var(--erp-indigo-soft);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+}
+
+/* Student Row Avatar */
+.table-student-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.table-student-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5549E8 0%, #3B82F6 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   NOTIFICATION BANNERS & MODALS
+   ========================================================================== */
+.erp-alert-box {
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 500;
+  animation: slideInDown 0.25s ease;
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.erp-alert-box.success {
+  background-color: var(--erp-success-bg);
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.erp-alert-box.error {
+  background-color: var(--erp-danger-bg);
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.erp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 26, 61, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.erp-modal-dialog {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  max-width: 440px;
+  width: 100%;
+  padding: 1.75rem;
+  box-shadow: 0 20px 25px -5px rgba(28, 26, 61, 0.2);
+}
+
+/* ==========================================================================
+   FEEDBACK MODAL
+   ========================================================================== */
+.feedback-modal-dialog {
+  max-width: 500px;
+}
+
+.feedback-textarea {
+  width: 100%;
+  height: 110px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  border: 1.5px solid var(--erp-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  resize: vertical;
+}
+
+.feedback-textarea:focus {
+  border-color: var(--erp-primary);
+  box-shadow: 0 0 0 3px rgba(85, 73, 232, 0.12);
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 860px) {
+  .erp-topbar {
+    padding: 0 1rem;
+  }
+  .topbar-college-tag {
+    display: none;
+  }
+  .erp-content-container {
+    padding: 1rem;
+  }
+  .erp-sidebar {
+    position: fixed;
+    height: 100%;
+  }
+}
