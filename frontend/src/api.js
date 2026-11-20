@@ -8,7 +8,9 @@
 const BACKEND_URL =
   import.meta.env.VITE_API_URL !== undefined
     ? import.meta.env.VITE_API_URL.replace(/\/+$/, '')
-    : 'http://localhost:5000';
+    : import.meta.env.PROD
+      ? ''
+      : 'http://localhost:5000';
 const AUTH_URL = `${BACKEND_URL}/api/auth`;
 const STUDENTS_URL = `${BACKEND_URL}/api/students`;
 const ATTENDANCE_URL = `${BACKEND_URL}/api/attendance`;
