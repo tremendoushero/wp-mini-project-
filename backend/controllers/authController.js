@@ -12,13 +12,34 @@ const generateToken = (adminId) => {
   });
 };
 
-// Helper cookie options
-const getCookieOptions = () => ({
-  httpOnly: true, // Prevents client-side JavaScript from reading the cookie (protects against XSS)
-  secure: process.env.NODE_ENV === 'production', // true in production (HTTPS)
-  sameSite: 'lax', // Allows cookie transmission on top-level navigation from React localhost:5173
-  maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
-});
+// Helper cookie options configured for both local dev and production on Vercel
+const getCookieOptions = () => {
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  // SameSite resolution:
+  // - If COOKIE_SAME_SITE is explicitly set ('none', 'lax', 'strict'), respect it.
+  // - Otherwise, in production default to 'none' for cross-domain support on Vercel HTTPS.
+  // - In development, default to 'lax' for local HTTP.
+  const sameSite = (process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'lax')).toLowerCase();
+
+  // Browsers strictly require `secure: true` when `SameSite=None`
+  const isSecure = isProduction || sameSite === 'none';
+
+  const options = {
+    httpOnly: true, // Prevents client-side JavaScript access (XSS protection)
+    secure: isSecure, // Required for HTTPS and SameSite=None
+    sameSite: sameSite, // 'none' for cross-domain on Vercel, 'lax' for local dev or same-domain
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
+    path: '/',
+  };
+
+  // If a custom cookie domain is set (e.g. .yourdomain.com for sharing across subdomains)
+  if (process.env.COOKIE_DOMAIN) {
+    options.domain = process.env.COOKIE_DOMAIN;
+  }
+
+  return options;
+};
 
 // ========================================================
 // 1. ADMIN LOGIN (POST /api/auth/login)
@@ -119,11 +140,11 @@ const getMe = async (req, res) => {
 // ========================================================
 const logoutAdmin = async (req, res) => {
   try {
+    // Clear the authentication cookie using the exact same options (domain, path, secure, SameSite)
     res.cookie('token', '', {
-      httpOnly: true,
+      ...getCookieOptions(),
+      maxAge: 0,
       expires: new Date(0),
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
     });
 
     return res.status(200).json({

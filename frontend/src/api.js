@@ -1,7 +1,14 @@
 // frontend/src/api.js
 // Purpose: Native Fetch API service layer connecting to Express backend with HttpOnly cookie credentials.
 
-const BACKEND_URL = 'http://localhost:5000';
+// Determine backend base URL:
+// 1. If VITE_API_URL environment variable is provided (e.g. 'https://my-backend.vercel.app'), use it.
+// 2. If VITE_API_URL is '' (same-origin / monorepo deployment on Vercel), use '' so routes call relative '/api/...'.
+// 3. Fallback to 'http://localhost:5000' for local development when not defined.
+const BACKEND_URL =
+  import.meta.env.VITE_API_URL !== undefined
+    ? import.meta.env.VITE_API_URL.replace(/\/+$/, '')
+    : 'http://localhost:5000';
 const AUTH_URL = `${BACKEND_URL}/api/auth`;
 const STUDENTS_URL = `${BACKEND_URL}/api/students`;
 const ATTENDANCE_URL = `${BACKEND_URL}/api/attendance`;
