@@ -34,10 +34,10 @@ function DeleteConfirmModal({ student, onConfirm, onCancel, isDeleting }) {
         </div>
 
         <div style={{ padding: '0.5rem 0 1.25rem 0' }}>
-          <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.9rem', color: '#78716C', lineHeight: 1.5 }}>
             Are you sure you want to permanently delete{' '}
-            <strong style={{ color: '#1E293B' }}>{student.name}</strong> (Roll No:{' '}
-            <strong style={{ color: '#5549E8' }}>{student.rollNumber}</strong>)?
+            <strong style={{ color: '#292524' }}>{student.name}</strong> (Roll No:{' '}
+            <strong style={{ color: '#EA580C' }}>{student.rollNumber}</strong>)?
             <br />
             This record will be permanently deleted from MongoDB Atlas.
           </p>

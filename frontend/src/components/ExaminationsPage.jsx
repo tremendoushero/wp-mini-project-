@@ -610,7 +610,7 @@ function ExaminationsPage({ students = [], onShowAlert, availableCourses = [] })
                               <span style={{
                                 fontWeight: 700,
                                 fontSize: '0.8rem',
-                                color: grade.includes('F') ? '#DC2626' : '#5549E8',
+                                color: grade.includes('F') ? '#DC2626' : '#EA580C',
                               }}>
                                 {grade}
                               </span>

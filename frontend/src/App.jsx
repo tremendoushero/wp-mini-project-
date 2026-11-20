@@ -266,15 +266,15 @@ function App() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#1C1A3D',
+          backgroundColor: '#202124',
           color: '#FFFFFF',
           fontFamily: 'Plus Jakarta Sans, sans-serif',
           gap: '1rem',
         }}
       >
-        <div style={{ fontSize: '2.5rem', animation: 'spin 1s infinite linear' }}>⏳</div>
+        <div style={{ fontSize: '2.5rem', animation: 'spin 1s infinite linear', color: '#F97316' }}>⏳</div>
         <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Students Info ERP</h2>
-        <p style={{ color: '#9E9BB8', fontSize: '0.85rem' }}>Verifying Administrator Session...</p>
+        <p style={{ color: '#A8A29E', fontSize: '0.85rem' }}>Verifying Administrator Session...</p>
       </div>
     );
   }

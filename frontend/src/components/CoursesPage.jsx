@@ -212,8 +212,8 @@ function CoursesPage({ students, onShowAlert, onCoursesUpdated }) {
                           <span
                             style={{
                               display: 'inline-block',
-                              backgroundColor: enrolledCount > 0 ? '#EEF0FD' : '#F1F5F9',
-                              color: enrolledCount > 0 ? '#5549E8' : '#64748B',
+                              backgroundColor: enrolledCount > 0 ? '#FFF7ED' : '#F5F5F4',
+                              color: enrolledCount > 0 ? '#EA580C' : '#78716C',
                               fontWeight: 700,
                               padding: '0.2rem 0.65rem',
                               borderRadius: '9999px',

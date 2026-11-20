@@ -387,9 +387,9 @@ function AttendancePage({ students, onShowAlert }) {
                         <div style={{ fontSize: '0.75rem', color: '#991B1B' }}>Absent</div>
                         <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#EF4444' }}>{historySummary.absent}</div>
                       </div>
-                      <div style={{ backgroundColor: '#EEF0FD', padding: '0.65rem', borderRadius: '8px' }}>
-                        <div style={{ fontSize: '0.75rem', color: '#5549E8' }}>Rate</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#5549E8' }}>{historySummary.percentage}%</div>
+                      <div style={{ backgroundColor: '#FFF7ED', padding: '0.65rem', borderRadius: '8px' }}>
+                        <div style={{ fontSize: '0.75rem', color: '#EA580C' }}>Rate</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#EA580C' }}>{historySummary.percentage}%</div>
                       </div>
                     </div>
                   )}

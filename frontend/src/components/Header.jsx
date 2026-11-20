@@ -25,7 +25,7 @@ function Header({ activeTab, onOpenFeedback, adminUser, onLogout, institutionSet
         <div className="topbar-page-info">
           <h1>{pageInfo.title}</h1>
           <div className="topbar-breadcrumb">
-            <span style={{ fontWeight: 600, color: '#5549E8' }}>Students Info</span>
+            <span style={{ fontWeight: 600, color: '#F97316' }}>Students Info</span>
             <span>/</span>
             <span>{pageInfo.title}</span>
           </div>
@@ -69,7 +69,7 @@ function Header({ activeTab, onOpenFeedback, adminUser, onLogout, institutionSet
           </div>
           <div className="topbar-user-meta">
             <span className="topbar-user-name">{adminUser?.name || 'Administrator'}</span>
-            <span className="topbar-user-sub" style={{ color: '#5549E8', fontWeight: 600 }}>
+            <span className="topbar-user-sub" style={{ color: '#F97316', fontWeight: 600 }}>
               🛡️ Admin
             </span>
           </div>

@@ -103,7 +103,9 @@ app.use(async (req, res, next) => {
       const currentState = readyStateLabels[mongoose.connection.readyState] || 'unknown';
       return res.status(503).json({
         success: false,
-        message: `Database connection failed (State: ${currentState}). Please verify MONGO_URI and MongoDB Atlas Network Access (0.0.0.0/0).`,
+        message: (err.message.includes('bad auth') || err.message.includes('authentication failed'))
+          ? 'MongoDB Atlas authentication failed. The database user password in backend/.env is invalid or was updated in Atlas.'
+          : `Database connection failed (State: ${currentState}). Please verify MONGO_URI and MongoDB Atlas Network Access (0.0.0.0/0).`,
         readyState: mongoose.connection.readyState,
         state: currentState,
         error: err.message,
@@ -185,6 +187,10 @@ const startServer = async () => {
     });
   } catch (error) {
     console.error(`\n❌ Failed to connect to MongoDB Atlas during startup: ${error.message}`);
+    if (error.message.includes('bad auth') || error.message.includes('authentication failed')) {
+      console.error('👉 Cause: MongoDB Atlas rejected the database username or password in backend/.env (MONGO_URI).');
+      console.error('👉 Fix: Go to MongoDB Atlas (cloud.mongodb.com) -> Security -> Database Access -> Edit Password, then update MONGO_URI in backend/.env.');
+    }
     console.error('⚠️  Express will start in offline/diagnostic mode to serve health-check status.');
 
     app.listen(PORT, () => {

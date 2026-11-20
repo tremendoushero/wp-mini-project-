@@ -28,7 +28,13 @@ if (!global.mongooseListenersAttached) {
 
   mongoose.connection.on('error', (err) => {
     console.error(`🚨 [MongoDB Event] Connection error: ${err.message}`);
-    if (err.message.includes('SSL') || err.message.includes('whitelist') || err.message.includes('ServerSelectionError')) {
+    if (err.message.includes('bad auth') || err.message.includes('authentication failed')) {
+      console.error('👉 Cause: MongoDB Atlas rejected the database username or password in MONGO_URI.');
+      console.error('👉 Fix: In MongoDB Atlas (cloud.mongodb.com):');
+      console.error('   1. Go to "Security" -> "Database Access".');
+      console.error('   2. Verify user exists or click "Edit" -> "Edit Password" to set a new password.');
+      console.error('   3. Update MONGO_URI in backend/.env with the new password.');
+    } else if (err.message.includes('SSL') || err.message.includes('whitelist') || err.message.includes('ServerSelectionError')) {
       console.error('👉 Cause: Your current IP address is likely not whitelisted in MongoDB Atlas.');
       console.error('👉 Fix: Go to MongoDB Atlas -> Network Access -> Add IP Address -> Select "Allow Access From Anywhere" (0.0.0.0/0).');
     }

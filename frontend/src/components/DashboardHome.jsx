@@ -150,13 +150,13 @@ function DashboardHome({ stats, students, onNavigateToStudents, institutionSetti
               {stats.totalAttendanceRecords > 0 ? (
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                    <span style={{ fontSize: '0.9rem', color: '#1E293B', fontWeight: 600 }}>Classroom Attendance Rate:</span>
-                    <strong style={{ fontSize: '1.2rem', color: '#5549E8' }}>{attendanceRate}</strong>
+                    <span style={{ fontSize: '0.9rem', color: '#292524', fontWeight: 600 }}>Classroom Attendance Rate:</span>
+                    <strong style={{ fontSize: '1.2rem', color: '#F97316' }}>{attendanceRate}</strong>
                   </div>
-                  <div style={{ height: '10px', backgroundColor: '#F1F5F9', borderRadius: '5px', overflow: 'hidden' }}>
-                    <div style={{ width: `${stats.overallAttendancePercentage || 0}%`, height: '100%', backgroundColor: '#5549E8' }}></div>
+                  <div style={{ height: '10px', backgroundColor: '#F5F5F4', borderRadius: '5px', overflow: 'hidden' }}>
+                    <div style={{ width: `${stats.overallAttendancePercentage || 0}%`, height: '100%', backgroundColor: '#F97316' }}></div>
                   </div>
-                  <p style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.75rem' }}>
+                  <p style={{ fontSize: '0.78rem', color: '#78716C', marginTop: '0.75rem' }}>
                     Total roll-call entries logged in MongoDB Atlas: <strong>{stats.totalAttendanceRecords}</strong>.
                   </p>
                 </div>
@@ -223,8 +223,8 @@ function DashboardHome({ stats, students, onNavigateToStudents, institutionSetti
                       style={{
                         padding: '0.55rem 0.75rem',
                         fontSize: '0.88rem',
-                        borderColor: '#5549E8',
-                        backgroundColor: '#F8FAFC',
+                        borderColor: '#F97316',
+                        backgroundColor: '#FAFAF9',
                       }}
                     >
                       {students.map((student) => (

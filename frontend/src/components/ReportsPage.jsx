@@ -54,10 +54,10 @@ function ReportsPage({ students, stats, institutionSettings }) {
 
         <div className="erp-card-body">
           {/* Institutional Print Header */}
-          <div style={{ textAlign: 'center', borderBottom: '2px solid #5549E8', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
-            <h2 style={{ margin: '0 0 0.25rem 0', color: '#1C1A3D', fontSize: '1.5rem' }}>{instName}</h2>
-            <p style={{ margin: 0, color: '#5549E8', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.5px' }}>{instSub}</p>
-            <p style={{ margin: '0.25rem 0 0 0', color: '#64748B', fontSize: '0.78rem' }}>
+          <div style={{ textAlign: 'center', borderBottom: '2px solid #F97316', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
+            <h2 style={{ margin: '0 0 0.25rem 0', color: '#202124', fontSize: '1.5rem' }}>{instName}</h2>
+            <p style={{ margin: 0, color: '#F97316', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.5px' }}>{instSub}</p>
+            <p style={{ margin: '0.25rem 0 0 0', color: '#78716C', fontSize: '0.78rem' }}>
               Report Generated: {new Date().toLocaleString()} • Academic Session: {institutionSettings?.academicSession || '2024-2025'}
             </p>
           </div>
@@ -147,10 +147,10 @@ function ReportsPage({ students, stats, institutionSettings }) {
                         </td>
                         <td>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ flex: 1, height: '8px', backgroundColor: '#F1F5F9', borderRadius: '4px', overflow: 'hidden' }}>
-                              <div style={{ width: `${pct}%`, height: '100%', backgroundColor: '#5549E8', borderRadius: '4px' }}></div>
+                            <div style={{ flex: 1, height: '8px', backgroundColor: '#F5F5F4', borderRadius: '4px', overflow: 'hidden' }}>
+                              <div style={{ width: `${pct}%`, height: '100%', backgroundColor: '#F97316', borderRadius: '4px' }}></div>
                             </div>
-                            <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#5549E8', minWidth: '45px' }}>{pct}%</span>
+                            <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#EA580C', minWidth: '45px' }}>{pct}%</span>
                           </div>
                         </td>
                       </tr>

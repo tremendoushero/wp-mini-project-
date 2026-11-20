@@ -28,16 +28,16 @@ function FeedbackModal({ isOpen, onClose, onSubmitFeedback }) {
       <div className="erp-modal-dialog feedback-modal-dialog" onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <div>
-            <h3 style={{ fontSize: '1.15rem', color: '#1E293B', fontWeight: 700 }}>
-              💬 Lloyd ERP Feedback
+            <h3 style={{ fontSize: '1.15rem', color: '#292524', fontWeight: 700 }}>
+              💬 Students Info ERP Feedback
             </h3>
-            <p style={{ fontSize: '0.8rem', color: '#64748B' }}>
-              Send queries or feedback to the LIET Academic Administration
+            <p style={{ fontSize: '0.8rem', color: '#78716C' }}>
+              Send queries or feedback to the Academic Administration
             </p>
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', color: '#94A3B8' }}
+            style={{ background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', color: '#A8A29E' }}
           >
             ✕
           </button>

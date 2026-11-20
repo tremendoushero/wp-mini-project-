@@ -1,5 +1,5 @@
 // frontend/src/components/Sidebar.jsx
-// Purpose: Collapsible, dark navy/purple vertical sidebar (#1C1A3D)
+// Purpose: Collapsible, dark charcoal vertical sidebar (#202124) with vibrant orange active highlights
 // Includes Admin profile, menu search field, 8 ERP navigation links, and logout.
 
 import React, { useState } from 'react';
